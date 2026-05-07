@@ -108,6 +108,7 @@ def test_add_source_data_injects_markers():
         "historical_migration": True,
         "analytics_source": "mixpanel",
         "$import_job_id": "job-1",
+        "$geoip_disable": True,
     }
 
 
@@ -153,6 +154,7 @@ def test_transform_event_full_pipeline():
     assert p["historical_migration"] is True
     assert p["analytics_source"] == "mixpanel"
     assert p["$import_job_id"] == "job-1"
+    assert p["$geoip_disable"] is True
     assert p["$geoip_city_name"] == "Bangalore"
     assert p["$geoip_country_code"] == "IN"
     assert p["custom_prop"] == "kept"
