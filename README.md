@@ -99,7 +99,9 @@ For every Mixpanel event line, mp2ph:
 6. Strips Mixpanel-internal properties: `$mp_api_endpoint`,
    `mp_processing_time_ms`, `$insert_id`, `$geo_source`, `$mp_api_timestamp_ms`.
 7. Adds source markers: `historical_migration: true`,
-   `analytics_source: "mixpanel"`, `$import_job_id: <uuid>`.
+   `analytics_source: "mixpanel"`, `$import_job_id: <uuid>`, plus
+   `$geoip_disable: true` (so PostHog doesn't overwrite the migrated geo
+   properties using the import server's IP).
 
 The country-name derivation that PostHog's Rust importer does (alpha-2 → long
 name) is intentionally omitted; PostHog will populate `$geoip_country_name`
