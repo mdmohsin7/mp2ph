@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local state
+.mp2ph-state.json
+*.log
+
+# Test data
+sample-events/
+*.jsonl
+*.jsonl.gz
+!tests/fixtures/*.jsonl
