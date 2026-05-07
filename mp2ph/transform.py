@@ -97,6 +97,9 @@ def add_source_data(properties: dict[str, Any], job_id: str) -> dict[str, Any]:
     out["historical_migration"] = True
     out["analytics_source"] = "mixpanel"
     out["$import_job_id"] = job_id
+    # Skip PostHog's auto-GeoIP enrichment; otherwise it overwrites the $geoip_*
+    # values we lifted from Mixpanel using the request IP (i.e. our server's IP).
+    out["$geoip_disable"] = True
     return out
 
 
